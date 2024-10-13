@@ -78,9 +78,9 @@ nixtla_client_forecast <- function(df, h=8, freq=NULL, id_col="unique_id", time_
       dplyr::group_by(.data$unique_id) |>
       dplyr::summarise(initial_size = dplyr::n())
 
-    if(any(num_rows$initial_size < model_params$input_size+model_params$horizon)){
-      stop(paste0("Your time series is too short. Please make sure that each of your series contains at least ", model_params$input_size+model_params$horizon, " observations."))
-    }
+    # if(any(num_rows$initial_size < model_params$input_size+model_params$horizon)){
+    #   stop(paste0("Your time series is too short. Please make sure that each of your series contains at least ", model_params$input_size+model_params$horizon, " observations."))
+    # }
   }
 
   # Restrict input if necessary ----
@@ -98,9 +98,9 @@ nixtla_client_forecast <- function(df, h=8, freq=NULL, id_col="unique_id", time_
       dplyr::group_by(.data$unique_id) |>
       dplyr::summarise(initial_size = dplyr::n())
 
-    if (any(input_samples > num_rows$initial_size)){
-      stop(paste0("Your time series is too short. Please make sure that each of your series contains at least ", model_params$input_size+model_params$horizon, " observations."))
-    }
+    # if (any(input_samples > num_rows$initial_size)){
+    #   stop(paste0("Your time series is too short. Please make sure that each of your series contains at least ", model_params$input_size+model_params$horizon, " observations."))
+    # }
 
     df <- df |>
       dplyr::group_by(.data$unique_id) |>
